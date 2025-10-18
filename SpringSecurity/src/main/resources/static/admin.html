@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #264653;
+            color: #f1faee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        button {
+            background: #e76f51;
+            color: white;
+            padding: 0.7rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        button:hover {
+            background: #f4a261;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome, Admin!</h1>
+<button onclick="logout()">Logout</button>
+<script>
+        function logout() {
+            localStorage.removeItem("token");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
