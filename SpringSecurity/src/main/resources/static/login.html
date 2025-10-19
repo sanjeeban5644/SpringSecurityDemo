@@ -2,65 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login | Spring Security Demo</title>
+    <title>Spring Security | Login / Sign Up</title>
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1d3557, #457b9d);
-            color: #f1faee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-container {
-            background-color: #ffffff10;
-            padding: 2rem 3rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            text-align: center;
-            width: 300px;
-        }
-        input {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-            border: none;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 0.6rem;
-            background-color: #e63946;
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #ff4b5c;
-        }
-        h2 {
-            margin-bottom: 1rem;
-        }
-        .error {
-            color: #ffb703;
-            font-size: 0.9rem;
-        }
-    </style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      color: #f1faee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      width: 320px;
+      text-align: center;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
+
+    .tabs button {
+      background: none;
+      border: none;
+      color: #f1faee;
+      font-weight: bold;
+      cursor: pointer;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.3s;
+    }
+
+    .tabs button.active {
+      border-bottom: 2px solid #e63946;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    button.submit-btn {
+      width: 100%;
+      padding: 0.6rem;
+      background-color: #e63946;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button.submit-btn:hover {
+      background-color: #ff4b5c;
+    }
+
+    .error, .success {
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .error { color: #ffb703; }
+    .success { color: #8cffb3; }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-<div class="login-container">
-    <h2>Login</h2>
+<div class="container">
+    <div class="tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="signupTab">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
     <form id="loginForm">
-        <input type="text" id="username" placeholder="Username" required><br>
-        <input type="password" id="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button type="submit" class="submit-btn">Login</button>
+        <p class="error" id="loginMsg"></p>
     </form>
-    <p class="error" id="errorMsg"></p>
+
+    <!-- Sign Up Form -->
+    <form id="signupForm" class="hidden">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" placeholder="Username" required>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+        <button type="submit" class="submit-btn">Sign Up</button>
+        <p class="error" id="signupMsg"></p>
+    </form>
 </div>
 
 <script src="auth.js"></script>
