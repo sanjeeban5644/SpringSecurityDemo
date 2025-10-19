@@ -2,6 +2,7 @@ package com.sanjeeban.SpringSecurity.Services;
 
 
 import com.sanjeeban.SpringSecurity.Entity.UserEntity;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
@@ -31,5 +32,15 @@ public class JwtService {
                 .signWith(getSecretKey())
                 .compact();
     }
+
+    public String getUsernameFromToken(String token){
+        Claims claims = Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+        return claims.getSubject();
+    }
+
 
 }
