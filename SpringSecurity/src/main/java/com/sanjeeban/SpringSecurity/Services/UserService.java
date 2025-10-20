@@ -3,6 +3,7 @@ package com.sanjeeban.SpringSecurity.Services;
 import com.sanjeeban.SpringSecurity.Entity.UserEntity;
 import com.sanjeeban.SpringSecurity.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -25,7 +26,7 @@ public class UserService implements UserDetailsService {
     }
 
     public UserEntity getUserByUsername(String username){
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username does not exist"));
+        return userRepository.findByUsername(username).orElseThrow(() -> new BadCredentialsException("Username does not exist"));
     }
 
 
